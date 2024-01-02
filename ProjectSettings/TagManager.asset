@@ -3,7 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Food
+  - Slot
+  - pickable
+  - QuickSlot
+  - activeConstructable
+  - Ground
+  - ghost
+  - Tree
+  - placedFoundation
+  - wallGhost
+  - placedWall
   layers:
   - Default
   - TransparentFX
@@ -11,8 +22,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Ground
+  - Equipable
   - 
   - 
   - 
