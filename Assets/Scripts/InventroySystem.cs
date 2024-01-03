@@ -31,6 +31,9 @@ public class InventorySystem : MonoBehaviour
     public TextMeshProUGUI pickupName;
     public Image pickupImage;
 
+    public List<string> itemsPickedup;
+
+
 
     private void Awake()
     {
@@ -110,7 +113,10 @@ public class InventorySystem : MonoBehaviour
 
     public void AddToInventory(string itemName)
     {
-        SoundManager.Instance.PlaySound(SoundManager.Instance.pickUpItemSound);
+        if (SaveManager.Instance.isLoading == false)
+        {
+            SoundManager.Instance.PlaySound(SoundManager.Instance.pickUpItemSound);
+        }
 
         whatSlotToEquip = FindNextEmptySlot();
 

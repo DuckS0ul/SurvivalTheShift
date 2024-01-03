@@ -15,6 +15,8 @@ public class MenuManager : MonoBehaviour
     public GameObject settingsMenu;
     public GameObject menu;
 
+    public GameObject overrideAlert;
+
     public bool isMenuOpen;
 
     private void Awake()
@@ -35,6 +37,7 @@ public class MenuManager : MonoBehaviour
         {
             uiCanvas.SetActive(false);
             menuCanvas.SetActive(true);
+            
 
             isMenuOpen = true;
 
@@ -54,6 +57,7 @@ public class MenuManager : MonoBehaviour
 
             uiCanvas.SetActive(true);
             menuCanvas.SetActive(false);
+            overrideAlert.SetActive(false);
 
             isMenuOpen = false;
 
@@ -69,9 +73,6 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public void TempSavegame()
-    {
-        SaveManager.Instance.SaveGame();
-    }
+    
 
 }
