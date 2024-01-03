@@ -69,6 +69,9 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-
+    public void TempSavegame()
+    {
+        SaveManager.Instance.SaveGame();
+    }
 
 }
