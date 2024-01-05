@@ -212,6 +212,9 @@ public class CraftingSystem : MonoBehaviour
         {
 
             craftingScreenUI.SetActive(true);
+
+            craftingScreenUI.GetComponentInParent<Canvas>().sortingOrder = MenuManager.Instance.SetAsFront();
+
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 

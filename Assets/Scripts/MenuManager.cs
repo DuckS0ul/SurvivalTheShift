@@ -19,6 +19,13 @@ public class MenuManager : MonoBehaviour
 
     public bool isMenuOpen;
 
+    public int currentFront = 0;
+
+    public int SetAsFront()
+    {
+        return currentFront++;    
+    }
+
     private void Awake()
     {
         if (Instance != null && Instance != this)

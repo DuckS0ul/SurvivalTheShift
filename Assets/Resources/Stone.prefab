@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrashable: 1
-  thisName: Stone
+  thisName: Soda
   thisDescription: 1
   thisFunctionality: 1
   isConsumable: 0
@@ -126,3 +126,4 @@ MonoBehaviour:
   isEquippable: 0
   isInsideQuickSlot: 0
   isSelected: 0
+  isUseable: 0

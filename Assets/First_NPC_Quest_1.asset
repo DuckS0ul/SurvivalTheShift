@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 519df755e8d599c4ca38d63a447229fd, type: 3}
+  m_Name: First_NPC_Quest_1
+  m_EditorClassIdentifier: 
+  initialDialog:
+  - Hi
+  - Press F to pick up
+  - Press C to craft
+  - Press i to inventory
+  - Give me a Axe, I will Give you reward.
+  acceptOption: Sure
+  acceptAnswer: Go!
+  declineOption: bye
+  declineAnswer: oh no
+  comebackAfterDecline: again
+  comebackInProgress: u not finished
+  comebackCompleted: This is Your reward. And now you need find four magic stones
+    and back to your world.
+  finalWords: 886
+  coinReward: 25
+  rewardItem1: Soda
+  rewardItem2: Soda
+  firstRequirmentItem: Axe
+  firstRequirementAmount: 1
+  secondRequirmentItem: 
+  secondRequirementAmount: 0

@@ -84,6 +84,9 @@ public class InventorySystem : MonoBehaviour
         {
 
             inventoryScreenUI.SetActive(true);
+
+            inventoryScreenUI.GetComponentInParent<Canvas>().sortingOrder = MenuManager.Instance.SetAsFront();
+
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
@@ -135,6 +138,8 @@ public class InventorySystem : MonoBehaviour
 
         RecalculateList();
         CraftingSystem.Instance.RefreshNeededItems();
+
+        QuestManager.Instance.RefreshTrackerList();
     }
 
 
@@ -227,7 +232,7 @@ public class InventorySystem : MonoBehaviour
 
         RecalculateList();
         CraftingSystem.Instance.RefreshNeededItems();
-
+        QuestManager.Instance.RefreshTrackerList();
     }
 
 
@@ -254,4 +259,19 @@ public class InventorySystem : MonoBehaviour
     }
 
 
+
+    public int CheckItemAmount(string name)
+    {
+        int itemCounter = 0;
+
+        foreach(string item in itemList)
+        {
+            if(item == name)
+            {
+                itemCounter++;
+            }
+        }
+
+        return itemCounter;
+    }
 }

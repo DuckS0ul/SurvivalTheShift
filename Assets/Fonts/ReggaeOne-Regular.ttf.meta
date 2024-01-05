@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b5b8cee7521332e4cbd1b4eafb6b1508
+guid: 20eef7faa5efcfa4b8fed00520873b28
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,6 +8,7 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
+  fontName: Reggae One
   fontNames:
   - Reggae One
   fallbackFontReferences: []
