@@ -9,7 +9,7 @@ using UnityEngine;
 public class EquipableItem : MonoBehaviour
 {
     public Animator animator;
-
+    public bool swingWait = false;
 
 
     // Start is called before the first frame update
@@ -25,12 +25,17 @@ public class EquipableItem : MonoBehaviour
             InventorySystem.Instance.isOpen == false &&
             CraftingSystem.Instance.isOpen == false &&
             SelectionManager.Instance.handIsVisible == false &&
+            swingWait == false &&
             !ConstructionManager.Instance.inConstructionMode
             ) 
         {
+            swingWait = true;
+
             StartCoroutine(SwingSoundDelay());
 
             animator.SetTrigger("hit");
+
+            StartCoroutine(NewSwingDelay());
         }
     }
 
@@ -54,6 +59,12 @@ public class EquipableItem : MonoBehaviour
         SoundManager.Instance.PlaySound(SoundManager.Instance.toolSwingSound);
     }
 
+    IEnumerator NewSwingDelay()
+    {
+        yield return new WaitForSeconds(1.0f);
+
+        swingWait = false;
+    }
 
 
 }

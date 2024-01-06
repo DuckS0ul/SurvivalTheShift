@@ -166,6 +166,19 @@ public class EquipSystem : MonoBehaviour
     }
 
 
+    internal bool IsThereASwingLock()
+    {
+        if (selectedItemModel && selectedItemModel.GetComponent<EquipableItem>())
+        {
+            return selectedItemModel.GetComponent<EquipableItem>().swingWait;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
 
 
     private void SetEquippedModel(GameObject selectedItem)
