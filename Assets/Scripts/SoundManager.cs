@@ -20,6 +20,8 @@ public class SoundManager : MonoBehaviour
     //Music
     public AudioSource startingZoneBGMusic;
 
+    public AudioSource voiceovers;
+
 
     private void Awake()
     {
@@ -44,8 +46,18 @@ public class SoundManager : MonoBehaviour
     }
 
     
-
-
-
+    public void PlayVoiceOvers(AudioClip clip)
+    {
+        voiceovers.clip = clip;
+        if (!voiceovers.isPlaying)
+        {
+            voiceovers.Play();
+        }
+        else
+        {
+            voiceovers.Stop();
+            voiceovers.Play();
+        }
+    }
 
 }

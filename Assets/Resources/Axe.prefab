@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2573234784901414648}
   - component: {fileID: 7237078121431683851}
   - component: {fileID: -5037639734782485264}
+  - component: {fileID: 8428029690210364166}
   m_Layer: 5
   m_Name: Axe
   m_TagString: Untagged
@@ -126,3 +127,17 @@ MonoBehaviour:
   isEquippable: 1
   isInsideQuickSlot: 0
   isSelected: 0
+  isUseable: 0
+--- !u!114 &8428029690210364166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4333613607934712872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 140f6e752b4d0724b82855a4af576be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponDamage: 20

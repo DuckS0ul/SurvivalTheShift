@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 519df755e8d599c4ca38d63a447229fd, type: 3}
+  m_Name: First_NPC_Quest_1
+  m_EditorClassIdentifier: 
+  initialDialog:
+  - Hi, I am Gigi.
+  - 'Press F to pick up
+
+    Press Q to open Quest'
+  - Press C to craft
+  - Press i to inventory
+  - Give me a Axe, and reach the top. I will Give you reward.
+  initialDialogClips:
+  - {fileID: 8300000, guid: d0b763e0d90b6cb468e91d091789138f, type: 3}
+  - {fileID: 8300000, guid: 1c07041ddd7acd74ab8854be955265b4, type: 3}
+  - {fileID: 8300000, guid: b9b5defadcde8b1408dee1154d9e3386, type: 3}
+  - {fileID: 8300000, guid: e828bf4983de1f24090b316b3a7b65c1, type: 3}
+  - {fileID: 8300000, guid: 4b3763a135081ce43bbd3aa1bb5bdeb2, type: 3}
+  acceptOption: Sure
+  acceptAnswer: Go!
+  acceptAnswerClip: {fileID: 8300000, guid: a39b8756d3a0ac248866559bad62aede, type: 3}
+  declineOption: bye
+  declineAnswer: oh no
+  declineAnswerClip: {fileID: 8300000, guid: 13efc2659e2651b408c0b79e2d219317, type: 3}
+  comebackAfterDecline: Hi, you wanna try again?
+  comebackAfterDeclineClip: {fileID: 8300000, guid: f38a7e3481dec1147b11a3dfb8b5cfdd, type: 3}
+  comebackInProgress: You not finished.
+  comebackInProgressClip: {fileID: 8300000, guid: 3b8491b733a1a8d458a1d71353878d89, type: 3}
+  comebackCompleted: This is Your reward. And now you need find four magic stones
+    and back to your world.
+  comebackCompletedClip: {fileID: 8300000, guid: 7a4b767db19380d449acdd55cdc9f4e9, type: 3}
+  finalWords: 886
+  finalWordsClip: {fileID: 8300000, guid: 3e539ebccd9ff5f44a64cb55dbf3a632, type: 3}
+  coinReward: 25
+  rewardItem1: Soda
+  rewardItem2: Soda
+  firstRequirmentItem: Axe
+  firstRequirementAmount: 1
+  secondRequirmentItem: 
+  secondRequirementAmount: 0
+  hasCheckpoints: 1
+  checkpoints: []

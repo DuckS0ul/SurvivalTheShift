@@ -81,6 +81,28 @@ public class SelectionManager : MonoBehaviour
             }
 
 
+            Animal animal = selectionTransform.GetComponent<Animal>();
+
+            if (animal && animal.playerInRange)
+            {
+                interaction_text.text = animal.animalName;
+                Interaction_Info_UI.SetActive(true);
+
+                if (Input.GetMouseButtonDown(0) && EquipSystem.Instance.IsHoldingWeapon())
+                {
+                    StartCoroutine(DealDamageTo(animal, 0.3f, EquipSystem.Instance.GetWeaponDamage()));
+                }
+                
+            }
+            else
+            {
+                interaction_text.text = "";
+                Interaction_Info_UI.SetActive(false);
+            }
+
+
+
+
 
             if (choppableTree && choppableTree.playerInRange)
             {
@@ -147,6 +169,12 @@ public class SelectionManager : MonoBehaviour
 
             handIsVisible = false;
         }
+    }
+
+    IEnumerator DealDamageTo(Animal animal, float delay, int damage)
+    {
+        yield return new WaitForSeconds(delay);
+        animal.TakeDamage(damage);
     }
 
 
