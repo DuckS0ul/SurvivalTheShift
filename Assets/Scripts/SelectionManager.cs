@@ -26,6 +26,8 @@ public class SelectionManager : MonoBehaviour
     public GameObject selectedTree;
     public GameObject chopHolder;
 
+    public GameObject selectedStorageBox;
+
     private void Start()
     {
         onTarget = false;
@@ -110,6 +112,30 @@ public class SelectionManager : MonoBehaviour
                 handIsVisible = true;
             }
             
+            StorageBox storageBox = selectionTransform.GetComponent<StorageBox>();
+
+            if (storageBox && storageBox.playerInRange && PlacementSystem.Instance.inPlacementMode == false)
+            {
+                interaction_text.text = "Press F to Open";
+                Interaction_Info_UI.SetActive(true);
+
+                selectedStorageBox = storageBox.gameObject;
+
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    StorageManager.Instance.OpenBox(storageBox);
+                }
+            }
+            else
+            {
+                if (selectedStorageBox != null)
+                {
+                    selectedStorageBox = null;
+                }
+            }
+
+
+
 
             Animal animal = selectionTransform.GetComponent<Animal>();
 
@@ -157,7 +183,7 @@ public class SelectionManager : MonoBehaviour
                 handIcon.gameObject.SetActive(false);
             }
 
-            if (!npc && !interactable && !animal && !choppableTree)
+            if (!npc && !interactable && !animal && !choppableTree && !storageBox)
             {
                 interaction_text.text = "";
                 Interaction_Info_UI.SetActive(false);

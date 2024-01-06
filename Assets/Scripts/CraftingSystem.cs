@@ -18,10 +18,10 @@ public class CraftingSystem : MonoBehaviour
     Button toolsBTN, survivalBTN, refineBTN, constructionBTN;
 
     //Craft Buttons
-    Button craftAxeBTN, craftPlankBTN, craftWallBTN, craftFoundationBTN;
+    Button craftAxeBTN, craftPlankBTN, craftWallBTN, craftFoundationBTN, craftStorageBoxBTN;
 
     //Requirement Text
-    TextMeshProUGUI AxeReq1, AxeReq2, PlankReq1, WallReq1, FoundationReq1;
+    TextMeshProUGUI AxeReq1, AxeReq2, PlankReq1, WallReq1, FoundationReq1, StorageBoxReq1;
 
     public bool isOpen;
 
@@ -33,6 +33,8 @@ public class CraftingSystem : MonoBehaviour
     public Blueprint WallBLP = new Blueprint("Wall", 1, 1, "Plank", 2, "", 0);
 
     public Blueprint FoundationBLP = new Blueprint("Foundation", 1, 1, "Plank", 4, "", 0);
+
+    public Blueprint StorageBoxBLP = new Blueprint("StorageBox", 1, 1, "Plank", 3, "", 0);
 
 
 
@@ -97,6 +99,11 @@ public class CraftingSystem : MonoBehaviour
         craftFoundationBTN = constructionScreenUI.transform.Find("Foundation").transform.Find("Button").GetComponent<Button>();
         craftFoundationBTN.onClick.AddListener(delegate { CraftAnyItem(FoundationBLP); });
 
+        //StorageBox
+        StorageBoxReq1 = survivalScreenUI.transform.Find("StorageBoxSmall").transform.Find("req1").GetComponent<TextMeshProUGUI>();
+
+        craftStorageBoxBTN = survivalScreenUI.transform.Find("StorageBoxSmall").transform.Find("Button").GetComponent<Button>();
+        craftStorageBoxBTN.onClick.AddListener(delegate { CraftAnyItem(StorageBoxBLP); });
 
     }
 
@@ -324,6 +331,17 @@ public class CraftingSystem : MonoBehaviour
             craftFoundationBTN.gameObject.SetActive(false);
         }
 
+        //---- StorageBox ----//
+        StorageBoxReq1.text = "3 Planks [" + plank_count + "]";
+
+        if (plank_count >= 3 && InventorySystem.Instance.CheckSlotsAvailable(1))
+        {
+            craftStorageBoxBTN.gameObject.SetActive(true);
+        }
+        else
+        {
+            craftStorageBoxBTN.gameObject.SetActive(false);
+        }
 
     }
 
