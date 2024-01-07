@@ -13,6 +13,9 @@ public class BearMovement : MonoBehaviour
     private  float updateDelay = 0.3f;
     private float updateDeadline;
 
+    [SerializeField] private int attackDamage = 20;
+
+
     //[SerializeField] private  int enemyType;
     private Vector3 originalPos;
     [SerializeField] private float alertRadius = 30.0f;
@@ -21,6 +24,8 @@ public class BearMovement : MonoBehaviour
     private enum MovementState { idle, walking, attack, running };
     private Animator anim;
     private MovementState state;
+
+    private bool playerInRange;
 
     private void LookAtTarget() {
         Vector3 lookPos = target.position - transform.position;
@@ -82,6 +87,11 @@ public class BearMovement : MonoBehaviour
             }
         }
 
+        if (playerInRange && state == MovementState.attack)
+        {
+            AttackPlayer();
+        }
+
         // Bear animation test
         UpdateAnimation();
 
@@ -119,6 +129,31 @@ public class BearMovement : MonoBehaviour
         }
 
 
+    }
+
+
+    public void PlayerEnteredRange()
+    {
+        Debug.Log("Player entered bear's range.");
+        playerInRange = true;
+    }
+
+    public void PlayerExitedRange()
+    {
+        Debug.Log("Player exited bear's range.");
+        playerInRange = false;
+    }
+
+
+    private void AttackPlayer()
+    {
+
+        PlayerState playerState = target.GetComponent<PlayerState>();
+        if (playerState != null)
+        {
+            playerState.currentHealth -= attackDamage;
+            Debug.Log("Attacked player, new health: " + playerState.currentHealth);
+        }
     }
 }
 
