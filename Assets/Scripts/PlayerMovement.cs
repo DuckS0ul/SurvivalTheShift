@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
 
     public float speed = 12f;
+    public float sprintSpeed = 18f; // Added sprint speed
     public float gravity = -9.81f * 2;
     public float jumpHeight = 3f;
 
@@ -15,12 +16,10 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
 
     Vector3 velocity;
-
     bool isGrounded;
 
     private Vector3 lastPosition = new Vector3(0f, 0f, 0f);
     public bool isMoving;
-
 
     // Update is called once per frame
     void Update()
@@ -47,7 +46,10 @@ public class PlayerMovement : MonoBehaviour
         //right is the red Axis, foward is the blue axis
         Vector3 move = transform.right * x + transform.forward * z;
 
-        controller.Move(move * speed * Time.deltaTime);
+        // Check if the player is holding down shift to sprint
+        float currentSpeed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : speed;
+
+        controller.Move(move * currentSpeed * Time.deltaTime);
 
         //check if the player is on the ground so he can jump
         if (Input.GetButtonDown("Jump") && isGrounded)
@@ -59,7 +61,6 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
-
 
         if (lastPosition != gameObject.transform.position && isGrounded == true)
         {
