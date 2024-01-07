@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class BearMovement : MonoBehaviour
 {
     [SerializeField] private  Transform target;
-    [SerializeField] private float stoppingDistance = 5.0f;
+    [SerializeField] private float stoppingDistance = 8.0f;
     private float currentDistance;
     [SerializeField] private  NavMeshAgent nav;
     private  float updateDelay = 0.3f;
@@ -15,10 +15,10 @@ public class BearMovement : MonoBehaviour
 
     //[SerializeField] private  int enemyType;
     private Vector3 originalPos;
-    [SerializeField] private float alertRadius = 15.0f;
-    [SerializeField] private float wanderingRadius = 12.0f;
+    [SerializeField] private float alertRadius = 30.0f;
+    [SerializeField] private float wanderingRadius = 25.0f;
 
-    private enum MovementState { idle, walking, attack };
+    private enum MovementState { idle, walking, attack, running };
     private Animator anim;
     private MovementState state;
 
@@ -71,8 +71,8 @@ public class BearMovement : MonoBehaviour
             }
             else{
                 TowardsTarget();  
-                state = MovementState.walking; 
-                Debug.Log("walking to player");
+                state = MovementState.running; 
+                Debug.Log("running to player");
 
             }
         }
@@ -94,18 +94,30 @@ public class BearMovement : MonoBehaviour
         {
             anim.SetBool("WalkForward", true);
             anim.SetBool("Idle", false);
+            anim.SetBool("Run Forward", false);
+
         }
         else if(state == MovementState.idle)
         {
             anim.SetBool("Idle", true);
+            anim.SetBool("WalkForward", false);
+            anim.SetBool("Run Forward", false);
+
+        }
+        else if(state == MovementState.running)
+        {
+            anim.SetBool("Run Forward", true);
+            anim.SetBool("Idle", false);
             anim.SetBool("WalkForward", false);
         }
         else if(state == MovementState.attack)
         {
             anim.SetBool("Idle", true);
             anim.SetBool("WalkForward", false);
+            anim.SetBool("Run Forward", false);
             anim.SetTrigger("Attack1");
         }
+
 
     }
 }
