@@ -7,13 +7,14 @@ using UnityEngine.AI;
 public class BearMovement : MonoBehaviour
 {
     [SerializeField] private  Transform target;
+    private  GameObject stateSystem;
     [SerializeField] private float stoppingDistance = 8.0f;
     private float currentDistance;
     [SerializeField] private  NavMeshAgent nav;
     private  float updateDelay = 0.3f;
     private float updateDeadline;
 
-    [SerializeField] private int attackDamage = 20;
+    [SerializeField] private int attackDamage = 10;
 
 
     //[SerializeField] private  int enemyType;
@@ -25,7 +26,7 @@ public class BearMovement : MonoBehaviour
     private Animator anim;
     private MovementState state;
 
-    private bool playerInRange;
+    //private bool playerInRange = false;
 
     private void LookAtTarget() {
         Vector3 lookPos = target.position - transform.position;
@@ -46,7 +47,7 @@ public class BearMovement : MonoBehaviour
         nav.SetDestination(originalPos + randomDirection);
         LookAtTarget();
         state = MovementState.walking; 
-        Debug.Log("wandering....walking");
+        //Debug.Log("wandering....walking");
         UpdateAnimation();
     }
 
@@ -57,6 +58,8 @@ public class BearMovement : MonoBehaviour
         //stoppingDistance = nav.stoppingDistance;
 
         anim = GetComponent<Animator>();
+
+        stateSystem = GameObject.Find("PlayerStateSystem");
 
         originalPos = transform.position;
         InvokeRepeating("Wandering", 0.0f, 8.0f);
@@ -71,13 +74,13 @@ public class BearMovement : MonoBehaviour
             if(currentDistance <= stoppingDistance){
                 LookAtTarget();
                 state = MovementState.attack;
-                Debug.Log("looking at player");
+                //Debug.Log("looking at player");
 
             }
             else{
                 TowardsTarget();  
                 state = MovementState.running; 
-                Debug.Log("running to player");
+                //Debug.Log("running to player");
 
             }
         }
@@ -85,11 +88,6 @@ public class BearMovement : MonoBehaviour
             if(nav.remainingDistance <= nav.stoppingDistance){
                 state = MovementState.idle;
             }
-        }
-
-        if (playerInRange && state == MovementState.attack)
-        {
-            AttackPlayer();
         }
 
         // Bear animation test
@@ -132,27 +130,12 @@ public class BearMovement : MonoBehaviour
     }
 
 
-    public void PlayerEnteredRange()
+    public void AttackPlayer()
     {
-        Debug.Log("Player entered bear's range.");
-        playerInRange = true;
-    }
-
-    public void PlayerExitedRange()
-    {
-        Debug.Log("Player exited bear's range.");
-        playerInRange = false;
-    }
-
-
-    private void AttackPlayer()
-    {
-
-        PlayerState playerState = target.GetComponent<PlayerState>();
-        if (playerState != null)
+        if (stateSystem != null)
         {
-            playerState.currentHealth -= attackDamage;
-            Debug.Log("Attacked player, new health: " + playerState.currentHealth);
+            stateSystem.GetComponent<PlayerState>().currentHealth -= attackDamage;
+            Debug.Log("Attacked player, new health: " + stateSystem.GetComponent<PlayerState>().currentHealth);
         }
     }
 }

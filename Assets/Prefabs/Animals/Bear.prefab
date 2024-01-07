@@ -366,6 +366,7 @@ GameObject:
   - component: {fileID: 8782976139201900771}
   - component: {fileID: 1108582102354727070}
   - component: {fileID: 4454270324765698764}
+  - component: {fileID: 2132715130405977365}
   m_Layer: 0
   m_Name: Bear
   m_TagString: Untagged
@@ -652,10 +653,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  playerState: {fileID: 0}
   stoppingDistance: 8
   nav: {fileID: 1108582102354727070}
+  attackDamage: 20
   alertRadius: 30
   wanderingRadius: 25
+--- !u!114 &2132715130405977365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917939140630454725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a164b4bf911e594893d064b7e55314e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1028622512381871550
 GameObject:
   m_ObjectHideFlags: 0

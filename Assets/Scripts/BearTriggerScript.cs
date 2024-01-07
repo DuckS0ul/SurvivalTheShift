@@ -6,6 +6,10 @@ public class BearTriggerScript : MonoBehaviour
 {
     private BearMovement bearMovement;
 
+    private float declineInterval = 0.5f;
+    private float curTime = 0;
+    private bool playerInRange = false;
+
     private void Start()
     {
         bearMovement = GetComponentInParent<BearMovement>();
@@ -15,15 +19,30 @@ public class BearTriggerScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            bearMovement.PlayerEnteredRange();
+            playerInRange = true;
         }
     }
-
+    
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            bearMovement.PlayerExitedRange();
+            playerInRange = false;
         }
     }
+
+    private void Update()
+    {
+        if(playerInRange)
+        {
+            curTime += Time.deltaTime;
+            if(curTime >= declineInterval)
+            {
+                curTime = 0;
+                bearMovement.AttackPlayer();
+            }
+        }
+    }
+
+
 }
