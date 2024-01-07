@@ -16,6 +16,9 @@ public class BearMovement : MonoBehaviour
 
     [SerializeField] private int attackDamage = 10;
 
+    //private float declineInterval = 8f;
+    //private float curTime = 0;
+
 
     //[SerializeField] private  int enemyType;
     private Vector3 originalPos;
@@ -62,7 +65,7 @@ public class BearMovement : MonoBehaviour
         stateSystem = GameObject.Find("PlayerStateSystem");
 
         originalPos = transform.position;
-        InvokeRepeating("Wandering", 0.0f, 8.0f);
+        //InvokeRepeating("Wandering", 0.0f, 8.0f);
     }
 
     // Update is called once per frame
@@ -85,6 +88,14 @@ public class BearMovement : MonoBehaviour
             }
         }
         else {
+            //curTime += Time.deltaTime;
+            //if(curTime >= declineInterval)
+            //{
+            //    curTime = 0;
+            //    Debug.Log("wandering....................");
+            //    Wandering();
+            //}
+
             if(nav.remainingDistance <= nav.stoppingDistance){
                 state = MovementState.idle;
             }
@@ -125,8 +136,6 @@ public class BearMovement : MonoBehaviour
             anim.SetBool("Run Forward", false);
             anim.SetTrigger("Attack1");
         }
-
-
     }
 
 
@@ -135,7 +144,7 @@ public class BearMovement : MonoBehaviour
         if (stateSystem != null)
         {
             stateSystem.GetComponent<PlayerState>().currentHealth -= attackDamage;
-            Debug.Log("Attacked player, new health: " + stateSystem.GetComponent<PlayerState>().currentHealth);
+            //Debug.Log("Attacked player, new health: " + stateSystem.GetComponent<PlayerState>().currentHealth);
         }
     }
 }

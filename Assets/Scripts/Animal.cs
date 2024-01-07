@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+
 
 public class Animal : MonoBehaviour
 {
@@ -46,10 +48,22 @@ public class Animal : MonoBehaviour
 
             if (currentHealth <= 0)
             {
+                Debug.Log("health less than 0");
                 PlayDyingSound();
 
                 animator.SetTrigger("Die");
-                GetComponent<AI_Movement>().enabled = false;
+                if(GetComponent<AI_Movement>() !=null) {GetComponent<AI_Movement>().enabled = false;}
+                if(GetComponent<BearMovement>() !=null) {
+                    animator.SetBool("Idle", false);
+                    animator.SetBool("WalkForward", false);
+                    animator.SetBool("Run Forward", false);
+
+                    GetComponent<BearTriggerScript>().enabled = false;
+
+                    GetComponent<BearMovement>().enabled = false;
+                    
+                    GetComponent<NavMeshAgent>().enabled = false;
+                }
 
                 StartCoroutine(PuddleDelay());
 
