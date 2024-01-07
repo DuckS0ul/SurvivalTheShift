@@ -59,13 +59,19 @@ public class SettingsManager : MonoBehaviour
 
     private void LoadAndSetVolume()
     {
-        VolumeSettings volumeSettings = SaveManager.Instance.LoadVolumeSettings(); 
-
-        musicSlider.value = volumeSettings.music;
-        effectsSlider.value = volumeSettings.effects;
-        masterSlider.value = volumeSettings.master;
-
-        print("Volume Settings are Loaded");
+        VolumeSettings volumeSettings = SaveManager.Instance.LoadVolumeSettings();
+        if (volumeSettings != null)
+        {
+            musicSlider.value = volumeSettings.music;
+            effectsSlider.value = volumeSettings.effects;
+            masterSlider.value = volumeSettings.master;
+            print("Volume Settings are Loaded");
+        }
+        else
+        {
+            print("Volume Settings could not be loaded.");
+        }
+       
     }
 
 
