@@ -61,7 +61,7 @@ public class BearMovement : MonoBehaviour
     void Update()
     {
         currentDistance = Vector3.Distance(transform.position, target.position);
-        Debug.Log("currentDistance: " + currentDistance);
+        //Debug.Log("currentDistance: " + currentDistance);
         if(currentDistance <= alertRadius){
             if(currentDistance <= stoppingDistance){
                 LookAtTarget();
