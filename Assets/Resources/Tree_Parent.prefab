@@ -71,6 +71,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 1093312332294038869, guid: b9d329dbca5135547acd786d67a23b48, type: 3}
+      propertyPath: m_Radius
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1496788162904224306, guid: b9d329dbca5135547acd786d67a23b48, type: 3}
       propertyPath: caloriesSpentChoppingWood
       value: 20
