@@ -13,6 +13,7 @@ public class MenuManager : MonoBehaviour
 
     public GameObject saveMenu;
     public GameObject settingsMenu;
+    public GameObject guideMenu;
     public GameObject menu;
 
     public GameObject overrideAlert;
@@ -60,6 +61,7 @@ public class MenuManager : MonoBehaviour
         {
             saveMenu.SetActive(false);
             settingsMenu.SetActive(false);
+            guideMenu.SetActive(false);
             menu.SetActive(true);
 
             uiCanvas.SetActive(true);
