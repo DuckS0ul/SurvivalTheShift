@@ -7,6 +7,8 @@ public class PlayerState : MonoBehaviour
 
     public static PlayerState Instance { get; set; }
 
+    public GameObject deathUI;
+
     // ---- Player Health ----//
     public float currentHealth;
     public float maxHealth;
@@ -94,6 +96,11 @@ public class PlayerState : MonoBehaviour
             currentHealth -= 10;
         }
 
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+
 
     }
 
@@ -117,6 +124,22 @@ public class PlayerState : MonoBehaviour
 
 
 
+    private void Die()
+    {
+        deathUI.SetActive(true); // 显示死亡UI界面
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        SelectionManager.Instance.DisableSelection();
+        SelectionManager.Instance.GetComponent<SelectionManager>().enabled = false;                         // 禁用玩家控制脚本（如果有的话）
+                                                                                                            // playerController.enabled = false; // 假设你有一个名为playerController的控制脚本
+    }
+
+
+    public void LoadMainScene()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu"); // 假设主场景名为 "MainScene"
+    }
 
 
 
