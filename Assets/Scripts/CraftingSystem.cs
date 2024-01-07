@@ -18,10 +18,10 @@ public class CraftingSystem : MonoBehaviour
     Button toolsBTN, survivalBTN, refineBTN, constructionBTN;
 
     //Craft Buttons
-    Button craftAxeBTN, craftPlankBTN, craftWallBTN, craftFoundationBTN, craftStorageBoxBTN;
+    Button craftAxeBTN, craftPlankBTN, craftWallBTN, craftFoundationBTN, craftStorageBoxBTN, craftCampfireBTN;
 
     //Requirement Text
-    TextMeshProUGUI AxeReq1, AxeReq2, PlankReq1, WallReq1, FoundationReq1, StorageBoxReq1;
+    TextMeshProUGUI AxeReq1, AxeReq2, PlankReq1, WallReq1, FoundationReq1, StorageBoxReq1, craftCampireReq1, craftCampfireReq2;
 
     public bool isOpen;
 
@@ -35,6 +35,8 @@ public class CraftingSystem : MonoBehaviour
     public Blueprint FoundationBLP = new Blueprint("Foundation", 1, 1, "Plank", 4, "", 0);
 
     public Blueprint StorageBoxBLP = new Blueprint("StorageBox", 1, 1, "Plank", 3, "", 0);
+
+    public Blueprint CampfireBLP = new Blueprint("Campfire", 1, 2, "Stone", 4, "Stick", 4);
 
 
 
@@ -105,6 +107,12 @@ public class CraftingSystem : MonoBehaviour
         craftStorageBoxBTN = survivalScreenUI.transform.Find("StorageBoxSmall").transform.Find("Button").GetComponent<Button>();
         craftStorageBoxBTN.onClick.AddListener(delegate { CraftAnyItem(StorageBoxBLP); });
 
+        //Campfire
+        craftCampireReq1 = survivalScreenUI.transform.Find("Campfire").transform.Find("req1").GetComponent<TextMeshProUGUI>();
+        craftCampfireReq2 = survivalScreenUI.transform.Find("Campfire").transform.Find("req2").GetComponent<TextMeshProUGUI>();
+
+        craftCampfireBTN = survivalScreenUI.transform.Find("Campfire").transform.Find("Button").GetComponent<Button>();
+        craftCampfireBTN.onClick.AddListener(delegate { CraftAnyItem(CampfireBLP); });
     }
 
 
@@ -343,9 +351,19 @@ public class CraftingSystem : MonoBehaviour
             craftStorageBoxBTN.gameObject.SetActive(false);
         }
 
+
+        //---- Campfire ----//
+        craftCampireReq1.text = "4 Stones [" + stone_count + "]";
+        craftCampfireReq2.text = "4 Sticks [" + stick_count + "]";
+
+        if (stone_count >= 4 && stick_count >= 4 && InventorySystem.Instance.CheckSlotsAvailable(1))
+        {
+            craftCampfireBTN.gameObject.SetActive(true);
+        }
+        else
+        {
+            craftCampfireBTN.gameObject.SetActive(false);
+        }
     }
-
-
-
 
 }

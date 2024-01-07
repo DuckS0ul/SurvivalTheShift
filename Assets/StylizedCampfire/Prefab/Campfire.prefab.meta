@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a085582c10efb9147a5834e7b092c822
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 270128
+  packageName: Stylized Campfire
+  packageVersion: 1.0
+  assetPath: Assets/StylizedCampfire/Prefab/Campfire.prefab
+  uploadId: 626166

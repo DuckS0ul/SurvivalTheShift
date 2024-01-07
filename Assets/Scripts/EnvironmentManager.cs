@@ -8,6 +8,12 @@ public class EnvironmentManager : MonoBehaviour
 
     public GameObject allItems;
 
+    public GameObject allTrees;
+
+    public GameObject allAnimals;
+
+    public GameObject placeables;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)

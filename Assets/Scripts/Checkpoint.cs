@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Checkpoint : ScriptableObject
 {
-    public string name;
+    public new string name;
     public bool isCompleted = false;
 
 

@@ -27,7 +27,7 @@ public class SelectionManager : MonoBehaviour
     public GameObject chopHolder;
 
     public GameObject selectedStorageBox;
-
+    public GameObject selectedCampfire;
     private void Start()
     {
         onTarget = false;
@@ -135,6 +135,29 @@ public class SelectionManager : MonoBehaviour
             }
 
 
+            Campfire campfire = selectionTransform.GetComponent<Campfire>();
+
+            if (campfire && campfire.playerInRange && PlacementSystem.Instance.inPlacementMode == false)
+            {
+                interaction_text.text = "Press F to Cook";
+                Interaction_Info_UI.SetActive(true);
+
+                selectedCampfire = campfire.gameObject;
+
+                if (Input.GetKeyDown(KeyCode.F) && campfire.isCooking == false)
+                {
+                    campfire.OpenUI();
+                }
+            }
+            else
+            {
+                if (selectedCampfire != null)
+                {
+                    selectedCampfire = null;
+                }
+            }
+
+
 
 
             Animal animal = selectionTransform.GetComponent<Animal>();
@@ -183,7 +206,7 @@ public class SelectionManager : MonoBehaviour
                 handIcon.gameObject.SetActive(false);
             }
 
-            if (!npc && !interactable && !animal && !choppableTree && !storageBox)
+            if (!npc && !interactable && !animal && !choppableTree && !storageBox && !campfire)
             {
                 interaction_text.text = "";
                 Interaction_Info_UI.SetActive(false);
