@@ -54,14 +54,8 @@ public class Animal : MonoBehaviour
                 animator.SetTrigger("Die");
                 if(GetComponent<AI_Movement>() !=null) {GetComponent<AI_Movement>().enabled = false;}
                 if(GetComponent<BearMovement>() !=null) {
-                    animator.SetBool("Idle", false);
-                    animator.SetBool("WalkForward", false);
-                    animator.SetBool("Run Forward", false);
-
+                    GetComponent<BearMovement>().afterDeath();
                     GetComponent<BearTriggerScript>().enabled = false;
-
-                    GetComponent<BearMovement>().enabled = false;
-                    
                     GetComponent<NavMeshAgent>().enabled = false;
                 }
 

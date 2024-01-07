@@ -16,20 +16,20 @@ public class BearMovement : MonoBehaviour
 
     [SerializeField] private int attackDamage = 10;
 
-    //private float declineInterval = 8f;
-    //private float curTime = 0;
+    private float declineInterval = 8f;
+    private float curTime = 0;
 
 
-    //[SerializeField] private  int enemyType;
     private Vector3 originalPos;
     [SerializeField] private float alertRadius = 30.0f;
     [SerializeField] private float wanderingRadius = 25.0f;
 
-    private enum MovementState { idle, walking, attack, running };
+    private enum MovementState { idle, walking, attack, running, death };
     private Animator anim;
     private MovementState state;
 
-    //private bool playerInRange = false;
+    private bool isDead = false;
+
 
     private void LookAtTarget() {
         Vector3 lookPos = target.position - transform.position;
@@ -50,7 +50,6 @@ public class BearMovement : MonoBehaviour
         nav.SetDestination(originalPos + randomDirection);
         LookAtTarget();
         state = MovementState.walking; 
-        //Debug.Log("wandering....walking");
         UpdateAnimation();
     }
 
@@ -58,51 +57,48 @@ public class BearMovement : MonoBehaviour
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
-        //stoppingDistance = nav.stoppingDistance;
 
         anim = GetComponent<Animator>();
 
         stateSystem = GameObject.Find("PlayerStateSystem");
 
         originalPos = transform.position;
-        //InvokeRepeating("Wandering", 0.0f, 8.0f);
+        InvokeRepeating("Wandering", 0.0f, 8.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentDistance = Vector3.Distance(transform.position, target.position);
-        //Debug.Log("currentDistance: " + currentDistance);
-        if(currentDistance <= alertRadius){
-            if(currentDistance <= stoppingDistance){
-                LookAtTarget();
-                state = MovementState.attack;
-                //Debug.Log("looking at player");
+        if(!isDead) {
+            currentDistance = Vector3.Distance(transform.position, target.position);
+            //Debug.Log("currentDistance: " + currentDistance);
+            if(currentDistance <= alertRadius){
+                if(currentDistance <= stoppingDistance){
+                    LookAtTarget();
+                    state = MovementState.attack;
+                    //Debug.Log("looking at player");
 
-            }
-            else{
-                TowardsTarget();  
-                state = MovementState.running; 
-                //Debug.Log("running to player");
+                }
+                else{
+                    TowardsTarget();  
+                    state = MovementState.running; 
+                    Debug.Log("running to player");
 
+                }
             }
+            else {
+                if(nav.remainingDistance <= nav.stoppingDistance){
+                    state = MovementState.idle;
+                }
+            }
+
+            // Bear animation test
+            UpdateAnimation();
         }
-        else {
-            //curTime += Time.deltaTime;
-            //if(curTime >= declineInterval)
-            //{
-            //    curTime = 0;
-            //    Debug.Log("wandering....................");
-            //    Wandering();
-            //}
-
-            if(nav.remainingDistance <= nav.stoppingDistance){
-                state = MovementState.idle;
-            }
+        else{
+            state = MovementState.death;
+            UpdateAnimation(); 
         }
-
-        // Bear animation test
-        UpdateAnimation();
 
         
     }
@@ -136,6 +132,14 @@ public class BearMovement : MonoBehaviour
             anim.SetBool("Run Forward", false);
             anim.SetTrigger("Attack1");
         }
+
+        else if(state == MovementState.death)
+        {
+            anim.SetBool("Idle", false);
+            anim.SetBool("WalkForward", false);
+            anim.SetBool("Run Forward", false);
+            anim.SetTrigger("Die");
+        }
     }
 
 
@@ -146,6 +150,14 @@ public class BearMovement : MonoBehaviour
             stateSystem.GetComponent<PlayerState>().currentHealth -= attackDamage;
             //Debug.Log("Attacked player, new health: " + stateSystem.GetComponent<PlayerState>().currentHealth);
         }
+    }
+
+    public void afterDeath()
+    {
+        isDead = true;
+        CancelInvoke();
+        nav.isStopped = true;
+        nav.velocity = Vector3.zero;
     }
 }
 
