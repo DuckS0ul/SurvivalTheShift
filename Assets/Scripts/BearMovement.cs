@@ -16,8 +16,8 @@ public class BearMovement : MonoBehaviour
 
     [SerializeField] private int attackDamage = 10;
 
-    private float declineInterval = 8f;
-    private float curTime = 0;
+    //private float declineInterval = 8f;
+    //private float curTime = 0;
 
 
     private Vector3 originalPos;
