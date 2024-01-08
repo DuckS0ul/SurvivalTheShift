@@ -69,7 +69,7 @@ public class SettingsManager : MonoBehaviour
         }
         else
         {
-            print("Volume Settings not be loaded.");
+            print("Volume Settings could not be loaded.");
         }
        
     }
