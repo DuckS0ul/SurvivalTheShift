@@ -5505,7 +5505,7 @@ PrefabInstance:
       objectReference: {fileID: 2129995669}
     - target: {fileID: 4454270324765698764, guid: e35e742fcd942b8429c80e2385660ed6, type: 3}
       propertyPath: attackDamage
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8752275392035740090, guid: e35e742fcd942b8429c80e2385660ed6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6702,7 +6702,7 @@ PrefabInstance:
       objectReference: {fileID: 2129995669}
     - target: {fileID: 4454270324765698764, guid: e35e742fcd942b8429c80e2385660ed6, type: 3}
       propertyPath: attackDamage
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8752275392035740090, guid: e35e742fcd942b8429c80e2385660ed6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6780,7 +6780,7 @@ PrefabInstance:
       objectReference: {fileID: 2129995669}
     - target: {fileID: 4454270324765698764, guid: e35e742fcd942b8429c80e2385660ed6, type: 3}
       propertyPath: attackDamage
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8752275392035740090, guid: e35e742fcd942b8429c80e2385660ed6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15628,7 +15628,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8428029690210364166, guid: 532cddd01a41bde4c84d407d1c37d3dc, type: 3}
       propertyPath: weaponDamage
-      value: 25
+      value: 35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27212,7 +27212,7 @@ PrefabInstance:
       objectReference: {fileID: 2129995669}
     - target: {fileID: 4454270324765698764, guid: e35e742fcd942b8429c80e2385660ed6, type: 3}
       propertyPath: attackDamage
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8752275392035740090, guid: e35e742fcd942b8429c80e2385660ed6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -28233,7 +28233,7 @@ PrefabInstance:
       objectReference: {fileID: 2129995669}
     - target: {fileID: 4454270324765698764, guid: e35e742fcd942b8429c80e2385660ed6, type: 3}
       propertyPath: attackDamage
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8752275392035740090, guid: e35e742fcd942b8429c80e2385660ed6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -36003,7 +36003,7 @@ PrefabInstance:
       objectReference: {fileID: 2129995669}
     - target: {fileID: 4454270324765698764, guid: e35e742fcd942b8429c80e2385660ed6, type: 3}
       propertyPath: attackDamage
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8752275392035740090, guid: e35e742fcd942b8429c80e2385660ed6, type: 3}
       propertyPath: m_LocalPosition.x

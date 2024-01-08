@@ -478,7 +478,7 @@ MonoBehaviour:
   animalName: Bear
   playerInRange: 0
   currentHealth: 0
-  maxHealth: 300
+  maxHealth: 80
   soundChannel: {fileID: 1995831887077739841}
   rabbitHitAndScream: {fileID: 8300000, guid: cf19dfa8b272696449ddcf64ae684d32, type: 3}
   rabbitHitAndDie: {fileID: 8300000, guid: cf19dfa8b272696449ddcf64ae684d32, type: 3}
@@ -640,7 +640,7 @@ MonoBehaviour:
   target: {fileID: 0}
   stoppingDistance: 8
   nav: {fileID: 1108582102354727070}
-  attackDamage: 20
+  attackDamage: 5
   alertRadius: 30
   wanderingRadius: 25
 --- !u!114 &2132715130405977365
